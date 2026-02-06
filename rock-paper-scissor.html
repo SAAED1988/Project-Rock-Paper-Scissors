@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    
+    <meta charset="UTF-8">
+    <title>Project Rock Paper Scissor</title>
+
+</head>
+
+<body>
+    <script>
+
+
+
+        let answer = Math.random() * 3;
+
+        function getComputerChoice(){
+
+            if (answer <= 1){
+                console.log ("Rock");
+            } else if (answer <= 2){
+                console.log('Paper')
+            }else {
+                console.log('Scissor')
+            }
+
+        }
+
+        const x = getComputerChoice();
+        console.log(x);
+
+        let y = prompt("Choice an Option! 'Rock','Paper', 'Scissor'","");
+
+        function getHumanChoice(){
+            if (y === "Rock"){
+                console.log("Rock");
+            } else if (y === "Paper") {
+                console.log("Paper");
+            }else if(y === "Scissor"){
+                console.log("Scissor");
+            } else {
+                console.log("");
+            }
+        }
+
+        let c = getHumanChoice();
+        console.log(c);
+
+        const humanScore = 0;
+        const computerScore = 0;
+
+        
+
+
+    </script>
+
+
+
+</body>
+
+<footer>
+
+
+</footer>
+
+
+
+</html>
