@@ -11,6 +11,13 @@
 
 <body>
     <script>
+        //the project is based on all learn in basic curse o JS, if else, let, const, function, variables and more. 
+//the bose of this game is make a game Rock-Paper-Scissor in the console.log only
+//able to make a choice independently what is the input from the user, automatically answer by computer and making a match between options
+//declare a winner of the game after 5 rounds played
+
+
+        
         function getComputerChoice(){
             let computer = Math.random() * 3;
                 if (computer <= 1){
@@ -41,7 +48,7 @@
                 } 
         }
 
-
+            // Score to players
             let computerScore = 0;
             let humanScore = 0;
             
@@ -75,7 +82,7 @@
                 }       
         }
 
-    
+        // 5 rounds
         function playGame(){
             
             const computerSelection = getComputerChoice();
@@ -99,6 +106,7 @@
             const humanSelectionFifth = getHumanChoice();
             playRound (computerSelectionFifth, humanSelectionFifth);
 
+            // EndGame
             if (computerScore === 3) {
                 console.log("Computer is the WINNER!");
             } else if (humanScore === 3){
