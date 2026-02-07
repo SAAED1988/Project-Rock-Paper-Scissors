@@ -12,46 +12,76 @@
 <body>
     <script>
 
-
-
-        let answer = Math.random() * 3;
+        let computer = Math.random() * 3;
 
         function getComputerChoice(){
 
-            if (answer <= 1){
-                console.log ("Rock");
-            } else if (answer <= 2){
-                console.log('Paper')
-            }else {
-                console.log('Scissor')
-            }
-
+            if (computer <= 1){
+                return "Rock";
+            } else if (computer <= 2){
+                return "Paper";
+            }else if (computer <=3)
+                return "Scissor";            
         }
+        
 
-        const x = getComputerChoice();
-        console.log(x);
-
-        let y = prompt("Choice an Option! 'Rock','Paper', 'Scissor'","");
+        let humanAnswer = prompt("Choice an Option! 'Rock','Paper', 'Scissor'","");
 
         function getHumanChoice(){
-            if (y === "Rock"){
-                console.log("Rock");
-            } else if (y === "Paper") {
-                console.log("Paper");
-            }else if(y === "Scissor"){
-                console.log("Scissor");
-            } else {
-                console.log("");
-            }
+            if (humanAnswer == "Rock" 
+            || humanAnswer == "rock"
+            || humanAnswer == "ROCK"
+            || humanAnswer =="RocK"){
+                return "Rock";
+            } else if (humanAnswer == "Paper"
+            || humanAnswer == "paper" 
+            || humanAnswer == "PAPER" 
+            || humanAnswer == "PapeR") {
+                return "Paper";
+            }else if(humanAnswer == "Scissor" 
+            || humanAnswer == "SCISSOR" 
+            || humanAnswer == "ScissoR" 
+            || humanAnswer == "scissor"){
+                return "Scissor";
+            } 
+        }
+        
+        
+        let computerScore = 0;
+        let humanScore = 0;
+
+
+        function playRound(computerChoice, humanChoice){
+                if (computerChoice == "Rock" && humanChoice == "Scissor") {
+                    console.log("You lose! Rock beats Scissor.");
+                    computerScore = +1;
+                } else if (computerChoice == "Scissor" && humanChoice == "Paper"){
+                    console.log("You lose! Scissor beats Paper.");
+                    computerScore = +1;
+                } else if (computerChoice == "Paper" && humanChoice == "Rock"){
+                    console.log("You lose! Paper beats Rock.");
+                    computerScore = +1;
+                } else if (humanChoice == "Rock" && computerChoice == "Scissor"){
+                    console.log("You win! Rock beats Scissor.");
+                    humanScore = +1;
+                } else if (humanChoice == "Scissor" && computerChoice == "Paper"){
+                    console.log("You win! Scissor beats Paper.");
+                    humanScore = +1;
+                } else if (humanChoice == "Paper" && computerChoice == "Rock"){
+                    console.log("You win! Paper beats Rock.");
+                    humanScore = +1;
+                } else {
+                    console.log("Draw.");
+                }
+                
         }
 
-        let c = getHumanChoice();
-        console.log(c);
-
-        const humanScore = 0;
-        const computerScore = 0;
-
         
+        const computerSelection = getComputerChoice();
+        const humanSelection = getHumanChoice();
+
+        playRound (computerSelection, humanSelection);
+
 
 
     </script>
