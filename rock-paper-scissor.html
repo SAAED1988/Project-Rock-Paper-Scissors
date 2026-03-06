@@ -27,13 +27,12 @@
         
         function getComputerChoice(){
             let computer = Math.floor(Math.random() * 100)+1;
-                if (computer <= 33){
-                    return "Rock";
-                } else if (computer <= 66){
-                    return "Paper";
-                }else if (computer <=100)
+                if (computer <= 33) return "Rock";
+                if (computer <= 66) return "Paper";
+                else {
                     return "Scissor";            
-        }
+                }
+            };
 
             // Score to players
             let computerScore = 0;
