@@ -10,6 +10,12 @@
 </head>
 
 <body>
+    
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissor">Scissor</button>
+
+
     <script>
         //the project is based on all learn in basic curse o JS, if else, let, const, function, variables and more. 
 //the bose of this game is make a game Rock-Paper-Scissor in the console.log only
@@ -19,33 +25,13 @@
 
         
         function getComputerChoice(){
-            let computer = Math.random() * 3;
-                if (computer <= 1){
+            let computer = Math.floor(Math.random() * 100)+1;
+                if (computer <= 33){
                     return "Rock";
-                } else if (computer <= 2){
+                } else if (computer <= 66){
                     return "Paper";
-                }else if (computer <=3)
+                }else if (computer <=100)
                     return "Scissor";            
-        }
-        
-        function getHumanChoice(){
-            let humanAnswer = prompt("Choice an Option! 'Rock','Paper', 'Scissor'","");
-                if (humanAnswer == "Rock" 
-                || humanAnswer == "rock"
-                || humanAnswer == "ROCK"
-                || humanAnswer =="RocK"){
-                    return "Rock";
-                } else if (humanAnswer == "Paper"
-                || humanAnswer == "paper" 
-                || humanAnswer == "PAPER" 
-                || humanAnswer == "PapeR") {
-                    return "Paper";
-                }else if(humanAnswer == "Scissor" 
-                || humanAnswer == "SCISSOR" 
-                || humanAnswer == "ScissoR" 
-                || humanAnswer == "scissor"){
-                    return "Scissor";
-                } 
         }
 
             // Score to players
@@ -78,33 +64,31 @@
                             console.log("You win! Paper beats Rock.");
                             humanScore++;
                 } else {
-                    console.log("TIe!!!.");
+                    console.log("Tie!!!.");
                 }       
         }
 
+
+        const rock = document.querySelector("#rock");
+                    rock.addEventListener("click",function choices(){
+                            playRound(getComputerChoice(),"Rock");
+                        });
+
+        const paper = document.querySelector("#paper");
+                    paper.addEventListener("click",function choices(){
+                            playRound(getComputerChoice(),"Paper");
+                        });
+
+        const scissor = document.querySelector("#scissor");
+                    scissor.addEventListener("click",function choices(){
+                            playRound(getComputerChoice(),"Scissor");
+                        });
+
+            
         // 5 rounds
         function playGame(){
             
-            const computerSelection = getComputerChoice();
-            const humanSelection = getHumanChoice();
-            playRound (computerSelection, humanSelection);
-            
-  
-            const computerSelectionTwo = getComputerChoice();
-            const humanSelectionTwo = getHumanChoice();
-            playRound (computerSelectionTwo, humanSelectionTwo);
-            
-            const computerSelectionThree = getComputerChoice();
-            const humanSelectionThree = getHumanChoice();
-            playRound (computerSelectionThree, humanSelectionThree);
-            
-            const computerSelectionFourth = getComputerChoice();
-            const humanSelectionFourth = getHumanChoice();
-            playRound (computerSelectionFourth, humanSelectionFourth);
-            
-            const computerSelectionFifth = getComputerChoice();
-            const humanSelectionFifth = getHumanChoice();
-            playRound (computerSelectionFifth, humanSelectionFifth);
+         
 
             // EndGame
             if (computerScore === 3) {
