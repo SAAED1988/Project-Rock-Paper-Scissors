@@ -10,11 +10,12 @@
 </head>
 
 <body>
-    
-    <button id="rock">Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissor">Scissor</button>
-
+    <div id="buttons">
+        <button id="Rock">Rock</button>
+        <button id="Paper">Paper</button>
+        <button id="Scissor">Scissor</button>
+    </div>
+        <div id="result"></div>
 
     <script>
         //the project is based on all learn in basic curse o JS, if else, let, const, function, variables and more. 
@@ -37,69 +38,91 @@
             // Score to players
             let computerScore = 0;
             let humanScore = 0;
+    
             
         function playRound(computerChoice, humanChoice){
                 if (computerChoice == "Rock" 
                     && humanChoice == "Scissor") {
-                    console.log("You lose! Rock beats Scissor.");
                     computerScore++;
+                    return "You lose! Rock beats Scissor.";
+                    
                 } else if (computerChoice == "Scissor" 
                             && humanChoice == "Paper"){
-                            console.log("You lose! Scissor beats Paper.");
                             computerScore++;
+                            return "You lose! Scissor beats Paper.";
+                            
                 } else if (computerChoice == "Paper" 
                             && humanChoice == "Rock"){
-                            console.log("You lose! Paper beats Rock.");
                             computerScore++;
+                            return "You lose! Paper beats Rock.";
+                            
                 } else if (humanChoice == "Rock" 
                             && computerChoice == "Scissor"){
-                            console.log("You win! Rock beats Scissor.");
                             humanScore++;
+                            return "You win! Rock beats Scissor.";
+                            
                 } else if (humanChoice == "Scissor" 
                             && computerChoice == "Paper"){
-                            console.log("You win! Scissor beats Paper.");
                             humanScore++;
+                            return "You win! Scissor beats Paper.";
+                            
                 } else if (humanChoice == "Paper" 
                             && computerChoice == "Rock"){
-                            console.log("You win! Paper beats Rock.");
                             humanScore++;
+                            return "You win! Paper beats Rock.";
+                            
                 } else {
-                    console.log("Tie!!!.");
+                    return "Tie!!!.";
+                    
                 }       
         }
 
+        function updateDisplay (message){
+            div.textContent = message + ` Player: ${humanScore} Computer: ${computerScore}`;
+            let finalResult = endgame()
+            if (finalResult !== undefined){
+                endGame.textContent = finalResult;
 
-        const rock = document.querySelector("#rock");
-                    rock.addEventListener("click",function choices(){
-                            playRound(getComputerChoice(),"Rock");
-                        });
-
-        const paper = document.querySelector("#paper");
-                    paper.addEventListener("click",function choices(){
-                            playRound(getComputerChoice(),"Paper");
-                        });
-
-        const scissor = document.querySelector("#scissor");
-                    scissor.addEventListener("click",function choices(){
-                            playRound(getComputerChoice(),"Scissor");
-                        });
-
-            
-        // 5 rounds
-        function playGame(){
-            
-         
-
-            // EndGame
-            if (computerScore === 3) {
-                console.log("Computer is the WINNER!");
-            } else if (humanScore === 3){
-                console.log("You are the WINNER!");
-            } else{
-                console.log("GAME OVER!!!")
+                const buttons = document.querySelectorAll("button");
+                buttons.forEach(button => {
+                    button.disabled = true;
+                });
             }
         }
-        playGame();
+
+        const div = document.querySelector("#result");
+        const endGame = document.createElement("div");
+        document.body.appendChild(endGame);
+        const buttons = document.querySelector("#buttons")
+
+        buttons.addEventListener("click", (event)=> {
+            let target = event.target;
+
+            switch(target.id){
+                case "Rock":
+                    let result1 = playRound(getComputerChoice(),target.id);
+                    updateDisplay(result1);
+                    break;
+                case "Paper":
+                    let result2 = playRound(getComputerChoice(),target.id);
+                        updateDisplay(result2);
+                    break;
+                case "Scissor":
+                    let result3 = playRound(getComputerChoice(),target.id);
+                    updateDisplay(result3);
+                    break;
+
+            }
+        })
+
+        function endgame(){
+            if (computerScore == 3) {
+                return "Computer is the WINNER!";
+            } else if (humanScore == 3){
+                return "You are the WINNER!";
+            } 
+            
+        }
 
     </script>
 
